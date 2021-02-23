@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #282c34;
+  color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  width: 45rem;
+  height: 52rem;
+  background-color: #222227;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1);
+}
+.month {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+}
+.day {
+  display: flex;
+  flex-wrap: wrap;
+}
+.day div {
+  width: 6.42871rem;
+  height: 5rem;
+}
