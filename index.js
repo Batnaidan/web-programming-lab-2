@@ -67,8 +67,8 @@ function printCalendar() {
   for (let i = 1; i <= 7 - dayofCurrentMonth.getDay(); i++) {
     days += `<div>${i}</div>`;
   }
-
   document.querySelector('.days').innerHTML = days;
+  for (let i = 0; i < calendar2021.length; i++) {}
 }
 printCalendar();
 function printNextMonth() {
