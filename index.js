@@ -40,6 +40,10 @@ const monthNames = [
 const date = new Date();
 
 function printCalendar() {
+  let days = '';
+  let events = '';
+  let monthName = monthNames[date.getMonth()].substring(0, 3).toLowerCase();
+
   let dayOfPrevMonth = new Date(date.getFullYear(), date.getMonth(), 0);
 
   let dayofCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
@@ -50,26 +54,27 @@ function printCalendar() {
     0
   );
 
-  console.log(dayofCurrentMonth.getDay());
   document.querySelector('.month h1').innerHTML = monthNames[date.getMonth()];
-
-  let days = '';
-
+  for (let i = 0; i < monthNames; i++) {}
   for (let i = 1; i <= dayOfPrevMonth.getDay(); i++) {
     days += `<div>${
       dayOfPrevMonth.getDate() - dayOfPrevMonth.getDay() + i
     }</div>`;
   }
-
   for (let i = 1; i <= dayofCurrentMonth.getDate(); i++) {
-    days += `<div class="currentMonth">${i}</div>`;
+    if (calendar2021[monthName][i]) {
+      events += `<div>${calendar2021[monthName][i]}</div>`;
+      days += `<div class="currentMonth event">${i}</div>`;
+    } else {
+      days += `<div class="currentMonth">${i}</div>`;
+    }
   }
 
   for (let i = 1; i <= 7 - dayofCurrentMonth.getDay(); i++) {
     days += `<div>${i}</div>`;
   }
   document.querySelector('.days').innerHTML = days;
-  for (let i = 0; i < calendar2021.length; i++) {}
+  document.querySelector('.events').innerHTML = events;
 }
 printCalendar();
 function printNextMonth() {
