@@ -49,6 +49,7 @@ function printCalendar() {
     date.getMonth() + 2,
     0
   );
+
   console.log(dayofCurrentMonth.getDay());
   document.querySelector('.month h1').innerHTML = monthNames[date.getMonth()];
 
