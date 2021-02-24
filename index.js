@@ -39,28 +39,43 @@ const monthNames = [
 ];
 const date = new Date();
 
-let dayOfPrevMonth = new Date(date.getFullYear(), date.getMonth(), 0);
+function printCalendar() {
+  let dayOfPrevMonth = new Date(date.getFullYear(), date.getMonth(), 0);
 
-let dayofCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  let dayofCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
 
-let dayOfNextMonth = new Date(date.getFullYear(), date.getMonth() + 2, 0);
+  let lastDayOfCurrentMonth = new Date(
+    date.getFullYear(),
+    date.getMonth() + 2,
+    0
+  );
+  console.log(dayofCurrentMonth.getDay());
+  document.querySelector('.month h1').innerHTML = monthNames[date.getMonth()];
 
-document.querySelector('.month').innerHTML = monthNames[date.getMonth()];
+  let days = '';
 
-const test = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
-console.log(test);
-let days = '';
+  for (let i = 1; i <= dayOfPrevMonth.getDay(); i++) {
+    days += `<div>${
+      dayOfPrevMonth.getDate() - dayOfPrevMonth.getDay() + i
+    }</div>`;
+  }
 
-for (let i = 1; i <= dayOfPrevMonth.getDay(); i++) {
-  days += `<div>${
-    dayOfPrevMonth.getDate() - dayOfPrevMonth.getDay() + i
-  }</div>`;
+  for (let i = 1; i <= dayofCurrentMonth.getDate(); i++) {
+    days += `<div class="currentMonth">${i}</div>`;
+  }
+
+  for (let i = 1; i <= 7 - dayofCurrentMonth.getDay(); i++) {
+    days += `<div>${i}</div>`;
+  }
+
+  document.querySelector('.days').innerHTML = days;
 }
-
-for (let i = 1; i <= dayofCurrentMonth.getDate(); i++) {
-  days += `<div>${i}</div>`;
+printCalendar();
+function printNextMonth() {
+  date.setMonth(date.getMonth() + 1);
+  printCalendar();
 }
-
-// for(let i = 1; i <= dayOfNextMonth.getDa)
-
-document.querySelector('.day').innerHTML = days;
+function printPrevMonth() {
+  date.setMonth(date.getMonth() - 1);
+  printCalendar();
+}

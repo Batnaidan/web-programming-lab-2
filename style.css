@@ -1,36 +1,51 @@
 * {
   margin: 0;
+  padding: 0%;
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 html {
-  font-size: 62.5%;
+  font-size: 100%;
 }
 body {
   width: 100%;
   height: 100vh;
   background-color: #282c34;
-  color: whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .container {
-  width: 45rem;
-  height: 52rem;
+  width: 46em;
   background-color: #222227;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 1);
 }
 .month {
-  height: 100px;
-  line-height: 100px;
   text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
 }
+
 .day {
   display: flex;
   flex-wrap: wrap;
 }
 .day div {
-  width: 6.42871rem;
+  width: calc(46rem / 7);
   height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgba(200, 200, 200, 0.6);
+}
+.day div:hover:not(.week-day) {
+  cursor: pointer;
+  border: 1px solid white;
+}
+.event {
+  border: 1px solid#61dafb;
+}
+.currentMonth {
+  color: rgba(255, 255, 255, 1) !important;
 }

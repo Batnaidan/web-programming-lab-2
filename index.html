@@ -12,10 +12,12 @@
 <body>
     <div class="container">
         <div class="month">
+            <button onclick="printPrevMonth()">Prev</button>
+            <button onclick="printNextMonth()">Next</button>
             <h1></h1>
         </div>
         <div class="calendar">
-            <div class="week-day">
+            <div class="day week-day">
                 <div>Mon</div>
                 <div>Tue</div>
                 <div>Wed</div>
@@ -24,7 +26,7 @@
                 <div>Sat</div>
                 <div>Sun</div>
             </div>
-            <div class="day"></div>
+            <div class="day days"></div>
         </div>
     </div>
     <script src="index.js"></script>
