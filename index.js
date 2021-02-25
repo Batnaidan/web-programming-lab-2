@@ -63,7 +63,9 @@ function printCalendar() {
   }
   for (let i = 1; i <= dayofCurrentMonth.getDate(); i++) {
     if (calendar2021[monthName][i]) {
-      events += `<div>${calendar2021[monthName][i]}</div>`;
+      events += `<div>${date.getMonth()} сарын ${i} - ${
+        calendar2021[monthName][i]
+      }</div>`;
       days += `<div class="currentMonth event">${i}</div>`;
     } else {
       days += `<div class="currentMonth">${i}</div>`;
@@ -74,7 +76,7 @@ function printCalendar() {
     days += `<div>${i}</div>`;
   }
   document.querySelector('.days').innerHTML = days;
-  document.querySelector('.events').innerHTML = events;
+  document.querySelector('.listed-events').innerHTML = events;
 }
 printCalendar();
 function printNextMonth() {

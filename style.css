@@ -26,7 +26,6 @@ body {
   text-transform: uppercase;
   font-weight: 500;
 }
-
 .day {
   display: flex;
   flex-wrap: wrap;
@@ -45,6 +44,13 @@ body {
 }
 .event {
   border: 1px solid#61dafb;
+}
+.listed-events {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  color: #61dafb;
 }
 .currentMonth {
   color: rgba(255, 255, 255, 1) !important;
