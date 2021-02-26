@@ -12,12 +12,12 @@
 <body>
     <div class="container">
         <div class="month">
-            <button onclick="printPrevMonth()">Prev</button>
-            <button onclick="printNextMonth()">Next</button>
-            <h1></h1>
+            <i class="fas fa-chevron-left" onclick="printPrevMonth()"></i>
+            <h1 class="month-name"></h1>
+            <i class="fas fa-chevron-right" onclick="printNextMonth()"></i>
         </div>
         <div class="calendar">
-            <div class="day week-day">
+            <div class="week-day">
                 <div>Mon</div>
                 <div>Tue</div>
                 <div>Wed</div>
@@ -28,8 +28,20 @@
             </div>
             <div class="day days"></div>
         </div>
-        <div class="listed-events"></div>
+        <div class="events">
+            <h3 class="event-header">
+                Events
+            </h3>
+            <div class="listed-events">
+            </div>
+            <div class="search">
+                <h3 onclick="">Search events</h3>
+                <input type="text" class="search-input" placeholder="Press Enter to Search" minlength="3">
+                <div class="search-result"></div>
+            </div>
+        </div>
     </div>
+    <script src="https://kit.fontawesome.com/2cba8f670e.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </body>
 </html>

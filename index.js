@@ -39,6 +39,7 @@ const monthNames = [
 ];
 const date = new Date();
 
+function searchEvents() {}
 function printCalendar() {
   let days = '';
   let events = '';
@@ -47,12 +48,6 @@ function printCalendar() {
   let dayOfPrevMonth = new Date(date.getFullYear(), date.getMonth(), 0);
 
   let dayofCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-
-  let lastDayOfCurrentMonth = new Date(
-    date.getFullYear(),
-    date.getMonth() + 2,
-    0
-  );
 
   document.querySelector('.month h1').innerHTML = monthNames[date.getMonth()];
   for (let i = 0; i < monthNames; i++) {}
@@ -63,10 +58,14 @@ function printCalendar() {
   }
   for (let i = 1; i <= dayofCurrentMonth.getDate(); i++) {
     if (calendar2021[monthName][i]) {
-      events += `<div>${date.getMonth()} сарын ${i} - ${
-        calendar2021[monthName][i]
-      }</div>`;
-      days += `<div class="currentMonth event">${i}</div>`;
+      if (date.getFullYear() == 2021) {
+        events += `<div>${date.getMonth() + 1} сарын ${i} - ${
+          calendar2021[monthName][i]
+        }</div>`;
+        days += `<div class="currentMonth event">${i}</div>`;
+      } else {
+        days += `<div class="currentMonth">${i}</div>`;
+      }
     } else {
       days += `<div class="currentMonth">${i}</div>`;
     }
@@ -87,3 +86,37 @@ function printPrevMonth() {
   date.setMonth(date.getMonth() - 1);
   printCalendar();
 }
+document.querySelector('.search-input').addEventListener('keypress', (e) => {
+  let searchResults = '',
+    count = 0;
+  if (e.key === 'Enter') {
+    if (document.querySelector('.search-input').value == '') {
+      searchResults += '<h3>Not Found</h3>';
+    } else {
+      searchResults += '<h3>Search Results</h3><div class="result">';
+      for (let i = 0; i < monthNames.length; i++) {
+        let monthName = monthNames[i].substring(0, 3).toLowerCase();
+        for (let j = 1; j <= 31; j++) {
+          if (calendar2021[monthName][j]) {
+            if (
+              calendar2021[monthName][j].includes(
+                document.querySelector('.search-input').value
+              )
+            ) {
+              count++;
+              searchResults += `<div>${i + 1} Сарын ${j} - ${
+                calendar2021[monthName][j]
+              }</div>`;
+            }
+          }
+        }
+      }
+    }
+    searchResults += '</div>';
+    if (count === 0) {
+      searchResults = '<h3>Not Found</h3>';
+    }
+    document.querySelector('.search-result').innerHTML = searchResults;
+    console.log(searchResults);
+  }
+});
